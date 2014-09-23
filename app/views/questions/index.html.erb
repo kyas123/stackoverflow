@@ -1,0 +1,19 @@
+<div>
+  <h4>Click a question to see the answers:</h4>
+    <ul>
+      <% @questions.each do |question| %>
+      <li>
+      <%=  link_to question.content, question_path(question) %>
+    </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <%= link_to "Ask a question.", new_question_path %>
+
+  <div>
+    <%= form_tag(questions_path, :method => 'get', id: "search-form") do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "search" %>
+    <% end %>
+  </div>
